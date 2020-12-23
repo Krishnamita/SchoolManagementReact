@@ -6,7 +6,9 @@ const exerciseSchema = new Schema({
   SchoolName: { type: String, required: true },
   SchoolID: { type: String, required: true },
   AdminEmail: { type: String, required: true },
+  // branchID: { type: String, required: true },
   date: { type: Date, required: true },
+
 }, {
   timestamps: true,
 });

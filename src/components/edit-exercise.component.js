@@ -5,13 +5,14 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
-import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
+import ExercisesList from './exercises-list.component';
+
+
+// axios.get('http://localhost:5000/exercises/', + this.props.match.params.id)
+//   .then(res => console.log(res.data));
 
 export default class EditExercise extends Component {
   constructor(props) {
@@ -32,19 +33,20 @@ export default class EditExercise extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   axios.get('http://localhost:5000/exercises/'+this.props.match.params.id)
-  //     .then(response => {
-  //       this.setState({
-  //         SchoolName: response.data.SchoolName,
-  //         SchoolID: response.data.SchoolID,
-  //         AdminEmail: response.data.AdminEmail,
-  //         date: new Date(response.data.date)
-  //       })   
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
+  componentDidMount() {
+    axios.get('http://localhost:5000/exercises/'+this.props.match.params.id)
+      .then(response => {
+        this.setState({
+          SchoolName: response.data.SchoolName,
+          SchoolID: response.data.SchoolID,
+          AdminEmail: response.data.AdminEmail,
+          date: new Date(response.data.date)
+        })   
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
 
   //   axios.get('http://localhost:5000/users/')
   //     .then(response => {
@@ -83,7 +85,7 @@ export default class EditExercise extends Component {
       date: date
     })
   }
-
+  
   onSubmit(e) {
     e.preventDefault();
 
@@ -95,6 +97,8 @@ export default class EditExercise extends Component {
     }
 
     console.log(exercise);
+
+   
 
     axios.post('http://localhost:5000/exercises/update/' + this.props.match.params.id, exercise)
       .then(res => console.log(res.data));
@@ -131,7 +135,7 @@ export default class EditExercise extends Component {
               />
         </div>
         <div className="form-group">
-          <label>AdminEmail (in minutes): </label>
+          <label>AdminEmail: </label>
           <input type="text" 
               className="form-control"
               value={this.state.AdminEmail}
