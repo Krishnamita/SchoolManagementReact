@@ -10,12 +10,14 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   const SchoolName = req.body.SchoolName;
   const SchoolID = req.body.SchoolID;
+  const BranchID = req.body.BranchID;
   const AdminEmail = req.body.AdminEmail;
   const date = Date.parse(req.body.date);
 
   const newExercise = new Exercise({
     SchoolName,
     SchoolID,
+    BranchID,
     AdminEmail,
     date
   });
@@ -42,6 +44,7 @@ router.route('/update/:id').post((req, res) => {
     .then(exercise => {
       exercise.SchoolName = req.body.SchoolName;
       exercise.SchoolID = req.body.SchoolID;
+      exercise.BranchID = req.body.BranchID;
       exercise.AdminEmail = req.body.AdminEmail;
       exercise.date = Date.parse(req.body.date);
 

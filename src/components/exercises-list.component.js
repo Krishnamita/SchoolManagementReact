@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import {Button,Table} from 'react-bootstrap';
+ import {Table} from 'react-bootstrap';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
-
+import Button from "components/CustomButtons/Button.js"
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
@@ -32,7 +32,7 @@ const styles = {
     marginTop: "0px",
     minHeight: "auto",
     fontWeight: "300",
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    fontFamily: "'Space Grotesk', 'Helvetica', 'Arial', sans-serif",
     marginBottom: "3px",
     textDecoration: "none"
   }
@@ -44,12 +44,13 @@ const useStyles = makeStyles(styles);
 
 const Exercise = props => (
   <tr>
-    <td><Button variant="primary" size='sm'>Login</Button>{' '}</td>
-    <td>{props.exercise.SchoolName}</td>
+    <td><Button color="info" round><b>Login</b></Button>{' '}</td>
     <td>{props.exercise.SchoolID}</td>
+    <td>{props.exercise.BranchID}</td>
+    <td>{props.exercise.SchoolName}</td>    
     <td>{props.exercise.AdminEmail}</td>
     <td>{props.exercise.date.substring(0,10)}</td>
-    <td>{props.exercise.Status}</td>
+    {/* <td>{props.exercise.Status}</td> */}
     <td>
       <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
     </td>
@@ -114,16 +115,18 @@ export default class ExercisesList extends Component {
             
               <tr>
               <th>Login</th>
-              <th>SchoolName</th>
-              <th>SchoolID</th>
-              <th>Email</th> 
+              <th>School ID</th>
+              <th>Branch ID</th>
+              <th>School/Branch Name</th>
+              
+              <th>Admin Email</th> 
               {/* <th>Created On</th> */}
               <th>Modified On</th>
               
               {/* <th>AdminID</th> */}
               {/* <th>Modified on</th> */}
               {/* <th>License</th> */}
-              <th>Status</th>
+              {/* <th>Status</th> */}
               <th>Actions</th>
               {/* <th>Transaction</th>  */}
               

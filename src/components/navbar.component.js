@@ -9,18 +9,24 @@ export default class Navbar1 extends Component {
     return (
 
       <Navbar collapseOnSelect expand="lg">
-        <Navbar.Brand style={{ color: "white" }} href="#home">School Data</Navbar.Brand>
+        <Navbar.Brand style={{ color: "white" }} href="#home">Control Panel</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto ">
 
-            <Nav.Link active eventKey="1" as={Link} to="/">
-                List of Schools
-            </Nav.Link>
             
-            <Nav.Link  eventKey="2" as={Link} to="/create">
+            <Nav.Link  eventKey="1" as={Link} to="/create">
                 Create New School
             </Nav.Link>
+
+            <Nav.Link eventKey="2" as={Link} to="/create">
+              Create New Branch
+            </Nav.Link>
+
+            <Nav.Link eventKey="3" as={Link} to="/">
+              Reset
+            </Nav.Link>
+
            
             </Nav>
         </Navbar.Collapse>

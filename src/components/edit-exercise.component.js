@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-
+import Button from "components/CustomButtons/Button.js"
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import Card from "components/Card/Card.js";
@@ -16,10 +16,10 @@ import ExercisesList from './exercises-list.component';
 
 export default class EditExercise extends Component {
   constructor(props) {
-    super(props);
-
+    super(props);    
     this.onChangeSchoolName = this.onChangeSchoolName.bind(this);
     this.onChangeSchoolID = this.onChangeSchoolID.bind(this);
+    this.onChangeBranchID = this.onChangeBranchID.bind(this);
     this.onChangeAdminEmail = this.onChangeAdminEmail.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -27,6 +27,7 @@ export default class EditExercise extends Component {
     this.state = {
       SchoolName: '',
       SchoolID: '',
+      BranchID: '',
       AdminEmail: '',
       date: new Date(),
       users: []
@@ -39,6 +40,7 @@ export default class EditExercise extends Component {
         this.setState({
           SchoolName: response.data.SchoolName,
           SchoolID: response.data.SchoolID,
+          BranchID: response.data.BranchID,
           AdminEmail: response.data.AdminEmail,
           date: new Date(response.data.date)
         })   
@@ -74,6 +76,13 @@ export default class EditExercise extends Component {
     })
   }
 
+  onChangeBranchID(e) {
+    this.setState({
+      BranchID: e.target.value
+    })
+  }
+
+
   onChangeAdminEmail(e) {
     this.setState({
       AdminEmail: e.target.value
@@ -92,6 +101,7 @@ export default class EditExercise extends Component {
     const exercise = {
       SchoolName: this.state.SchoolName,
       SchoolID: this.state.SchoolID,
+      BranchID: this.state.BranchID,
       AdminEmail: this.state.AdminEmail,
       date: this.state.date
     }
@@ -112,7 +122,7 @@ export default class EditExercise extends Component {
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <Card>
-              <CardHeader color="primary"><h5>Edit School Details</h5>
+              <CardHeader color="info"><h5>Edit School Details</h5>
               </CardHeader>
       <form onSubmit={this.onSubmit}>
         <CardBody>
@@ -135,6 +145,15 @@ export default class EditExercise extends Component {
               />
         </div>
         <div className="form-group">
+          <label>BranchID: </label>
+          <input type="text"
+            required
+            className="form-control"
+            value={this.state.BranchID}
+            onChange={this.onChangeBranchID}
+          />
+        </div>
+        <div className="form-group">
           <label>AdminEmail: </label>
           <input type="text" 
               className="form-control"
@@ -153,7 +172,7 @@ export default class EditExercise extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Edit Exercise Log" className="btn btn-primary" />
+                    <Button color="info" type="submit" round><b>Edit School Details</b></Button>
         </div>
                 </CardBody>
       </form>

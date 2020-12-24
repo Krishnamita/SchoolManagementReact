@@ -21,6 +21,7 @@ export default class CreateExercise extends Component {
 
     this.onChangeSchoolName = this.onChangeSchoolName.bind(this);
     this.onChangeSchoolID = this.onChangeSchoolID.bind(this);
+    this.onChangeBranchID = this.onChangeBranchID.bind(this);
     this.onChangeAdminEmail = this.onChangeAdminEmail.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -28,6 +29,7 @@ export default class CreateExercise extends Component {
     this.state = {
       SchoolName: '',
       SchoolID: '',
+      BranchID: '',
       AdminEmail: '',
       date: new Date(),
       users: []
@@ -62,6 +64,12 @@ export default class CreateExercise extends Component {
     })
   }
 
+  onChangeBranchID(e) {
+    this.setState({
+      BranchID: e.target.value
+    })
+  }
+
   onChangeAdminEmail(e) {
     this.setState({
       AdminEmail: e.target.value
@@ -80,6 +88,7 @@ export default class CreateExercise extends Component {
     const exercise = {
       SchoolName: this.state.SchoolName,
       SchoolID: this.state.SchoolID,
+      BranchID: this.state.BranchID,
       AdminEmail: this.state.AdminEmail,
       date: this.state.date
     }
@@ -98,7 +107,7 @@ export default class CreateExercise extends Component {
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <Card>
-              <CardHeader color="primary"><h5>Create New School</h5>
+              <CardHeader color="info"><h5>Create New School</h5>
               </CardHeader>
       <form onSubmit={this.onSubmit}>
         <CardBody>
@@ -120,6 +129,15 @@ export default class CreateExercise extends Component {
               value={this.state.SchoolID}
               onChange={this.onChangeSchoolID}
               />
+        </div>
+        <div className="form-group">
+          <label>BranchID: </label>
+          <input type="text"
+            required
+            className="form-control"
+            value={this.state.BranchID}
+            onChange={this.onChangeBranchID}
+          />
         </div>
         <div className="form-group">
           <label>AdminEmail: </label>

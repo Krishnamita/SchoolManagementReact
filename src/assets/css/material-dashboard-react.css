@@ -13,6 +13,7 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
  */
+ @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 .ct-grid {
   stroke: rgba(255, 255, 255, 0.2);
   stroke-width: 1px;
@@ -64,7 +65,7 @@ body {
   background-color: #eeeeee;
   color: #3c4858;
   margin: 0;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
   font-weight: 300;
   line-height: 1.5em;
 }
@@ -126,7 +127,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;;
   font-weight: 300;
   line-height: 1.5em;
 }
@@ -250,7 +251,7 @@ footer ul li a:hover {
   border-radius: 8px 0 0 8px;
   text-align: center;
   top: 120px;
-  .badge-primary-background-color: #9c27b0;
+  /* .badge-primary-background-color: #9c27b0; */
 }
 
 .fixed-plugin .SocialMediaShareButton,

@@ -26,8 +26,8 @@ function SuperUser() {
       {/* <Navbar /> */}
       <br/>
         <Route path="/" component={ExercisesList} />      
-        <Card><Route path="/edit/:id" component={EditExercise} /></Card>
-        <Card><Route path="/create" component={CreateExercise} /></Card>
+        <Route path="/edit/:id" component={EditExercise} />
+        <Route path="/create" component={CreateExercise} />
       {/* <Route path="/user" component={CreateUser} /> */}
       </div>
     </Router>
